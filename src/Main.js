@@ -186,6 +186,7 @@ function Main() {
         </Button>
         <div className='App'>
           <MainHeader />
+          
           <Lists lists={state.lists} dispatch={dispatch} />
           <DeletedUserList deletedUsers={state.deletedUsers}/>
         </div>

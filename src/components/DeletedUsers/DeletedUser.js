@@ -8,6 +8,7 @@ function DeletedUser(props) {
     
         <Table>
             <Table.Header>
+            <Table.Row>
                 <Table.HeaderCell><Icon name='envelope' />Email</Table.HeaderCell>
                 <Table.HeaderCell><Icon name='address card' />UserName</Table.HeaderCell>
                 <Table.HeaderCell><Icon name='delete calendar' />Requested</Table.HeaderCell>
@@ -15,6 +16,7 @@ function DeletedUser(props) {
                 <Table.HeaderCell><Icon name='adversal' />Braze</Table.HeaderCell>
                 <Table.HeaderCell><Icon name='chat' />Crisp</Table.HeaderCell>
                 <Table.HeaderCell><Icon name='check' />Completed</Table.HeaderCell>
+                </Table.Row>
             </Table.Header>
             <Table.Body>
                 <Table.Row>
