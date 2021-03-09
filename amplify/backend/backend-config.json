@@ -29,5 +29,12 @@
       "service": "S3",
       "providerPlugin": "awscloudformation"
     }
+  },
+  "function": {
+    "deleteBrazeUserData": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
   }
 }

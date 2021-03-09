@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "familyhelper19951de9": {}
+      },
+      "function": {
+        "deleteBrazeUserData": {
+          "deploymentBucketName": "amplify-familyhelper-dev-111047-deployment",
+          "s3Key": "amplify-builds/deleteBrazeUserData-5a526431485837486472-build.zip"
+        }
       }
     }
   }
