@@ -1,30 +1,33 @@
 
 import React from 'react';
-import { Item, Icon } from 'semantic-ui-react';
+import { Item, Icon, Table } from 'semantic-ui-react';
 
 function DeletedUser(props) {
   const { id, userEmail, userName, requestedAt, deletedIdentityAt, deletedCrispAt, deletedBrazeAt, completedRequestAt } = props;
   return (
-    <Item>
-      <Item.Content>
-        <Item.Header>
-          {`Deleted User: ${userEmail}`}
-          </Item.Header>
-          <Item.Extra>        
-          {`Username: ${userName}`}
-          <Icon name='delete calendar' />
-          {new Date(requestedAt).toDateString()}
-          <Icon name='user delete' />
-          {new Date(deletedIdentityAt).toDateString()}
-          <Icon name='adversal' />
-          {new Date(deletedBrazeAt).toDateString()}
-          <Icon name='chat' />
-          {new Date(deletedCrispAt).toDateString()}
-          <Icon name='check' />
-          {new Date(completedRequestAt).toDateString()}          
-        </Item.Extra>
-      </Item.Content>
-    </Item>
+    
+        <Table>
+            <Table.Header>
+                <Table.HeaderCell><Icon name='envelope' />Email</Table.HeaderCell>
+                <Table.HeaderCell><Icon name='address card' />UserName</Table.HeaderCell>
+                <Table.HeaderCell><Icon name='delete calendar' />Requested</Table.HeaderCell>
+                <Table.HeaderCell><Icon name='user delete' />Identity</Table.HeaderCell>
+                <Table.HeaderCell><Icon name='adversal' />Braze</Table.HeaderCell>
+                <Table.HeaderCell><Icon name='chat' />Crisp</Table.HeaderCell>
+                <Table.HeaderCell><Icon name='check' />Completed</Table.HeaderCell>
+            </Table.Header>
+            <Table.Body>
+                <Table.Row>
+                    <Table.Cell>{userEmail}</Table.Cell>
+                    <Table.Cell>{userName}</Table.Cell>
+                    <Table.Cell>{new Date(requestedAt).toLocaleTimeString()}</Table.Cell>
+                    <Table.Cell>{new Date(deletedIdentityAt).toLocaleTimeString()}</Table.Cell>
+                    <Table.Cell>{new Date(deletedBrazeAt).toLocaleTimeString()}</Table.Cell>
+                    <Table.Cell>{new Date(deletedCrispAt).toLocaleTimeString()}</Table.Cell>
+                    <Table.Cell>{new Date(completedRequestAt).toLocaleTimeString()}</Table.Cell>                    
+                </Table.Row>
+            </Table.Body>
+        </Table>      
   );
 }
 
