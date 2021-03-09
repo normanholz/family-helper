@@ -5,7 +5,7 @@ import { createList, updateList } from '../../graphql/mutations';
 import { useS3 } from '../../hooks/useS3';
 import UploadImage from '../HandleImages/UploadImage';
 
-function ListModal({ state, dispatch, saveList }) {
+function ListModal({ state, dispatch }) {
   const [uploadToS3] = useS3();
   const [fileToUpload, setFileToUpload] = useState();
 
@@ -13,9 +13,10 @@ function ListModal({ state, dispatch, saveList }) {
     const imageKey = uploadToS3(fileToUpload);
     console.log('imagekey', imageKey);
     const { title, description } = state;
+    const slug = title.replace(/\s/g, "");
     const result = await API.graphql(
-      graphqlOperation(createList, { input: { title, description, imageKey } })
-    );
+      graphqlOperation(createList, { input: { title, description, imageKey, slug } })
+    );    
     dispatch({ type: 'CLOSE_MODAL' });
     console.log('Save data with result: ', result);
   }
