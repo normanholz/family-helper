@@ -3,7 +3,7 @@ import { useEffect, useReducer } from 'react';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsConfig from './aws-exports';
 import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { listLists } from './graphql/queries';
+import { listDeletedUsers, listLists } from './graphql/queries';
 import 'semantic-ui-css/semantic.min.css';
 import MainHeader from './components/headers/MainHeader';
 import Lists from './components/Lists/Lists';
@@ -15,6 +15,7 @@ import {
   onUpdateList,
 } from './graphql/subscriptions';
 import ListModal from './components/modals/ListModal';
+import DeletedUserList from './components/DeletedUsers/DeletedUserList';
 Amplify.configure(awsConfig);
 
 const intialState = {
@@ -22,6 +23,7 @@ const intialState = {
   title: '',
   description: '',
   lists: [],
+  deletedUsers: [],
   isModalOpen: false,
   modalType: '',
 };
@@ -35,6 +37,8 @@ function listReducer(state = intialState, action) {
       return { ...state, title: action.value };
     case 'UPDATE_LISTS':
       return { ...state, lists: [...action.value, ...state.lists] };
+    case 'UPDATE_DELETED_USERS':
+      return { ...state, deletedUsers: [...action.value, ...state.deletedUsers] };
     case 'OPEN_MODAL':
       return { ...state, isModalOpen: true, modalType: 'add' };
     case 'CLOSE_MODAL':
@@ -89,13 +93,20 @@ async function deleteListById(id) {
 
 function Main() {
   const [state, dispatch] = useReducer(listReducer, intialState);
+
   async function fetchList() {
     const { data } = await API.graphql(graphqlOperation(listLists));
     dispatch({ type: 'UPDATE_LISTS', value: data.listLists.items });
   }
 
+  async function fetchDeletedUsers() {
+    const { data } = await API.graphql(graphqlOperation(listDeletedUsers));
+    dispatch({ type: 'UPDATE_DELETED_USERS', value: data.listDeletedUsers.items });
+  }
+
   useEffect(() => {
     fetchList();
+    fetchDeletedUsers();
   }, []);
 
   useEffect(() => {
@@ -149,6 +160,7 @@ function Main() {
         <div className='App'>
           <MainHeader />
           <Lists lists={state.lists} dispatch={dispatch} />
+          <DeletedUserList deletedUsers={state.deletedUsers}/>
         </div>
       </Container>
       <ListModal state={state} dispatch={dispatch} />
