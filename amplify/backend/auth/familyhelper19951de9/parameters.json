@@ -1,6 +1,6 @@
 {
     "identityPoolName": "familyhelper19951de9_identitypool_19951de9",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "family19951de9",
     "userPoolName": "familyhelper19951de9_userpool_19951de9",
     "autoVerifiedAttributes": [
