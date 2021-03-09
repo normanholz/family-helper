@@ -262,3 +262,51 @@ export const onDeleteAction = /* GraphQL */ `
     }
   }
 `;
+export const onCreateDeletedUser = /* GraphQL */ `
+  subscription OnCreateDeletedUser {
+    onCreateDeletedUser {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDeletedUser = /* GraphQL */ `
+  subscription OnUpdateDeletedUser {
+    onUpdateDeletedUser {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDeletedUser = /* GraphQL */ `
+  subscription OnDeleteDeletedUser {
+    onDeleteDeletedUser {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;

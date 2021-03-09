@@ -21,3 +21,14 @@ type Action @model {
   action: String
   listItem: ListItem @connection(name:"ListItemAction")
 }
+
+type DeletedUser @model {
+  id: ID!
+  userEmail: String!
+  userName: String
+  requestedAt: String
+  deletedIdentityAt: String
+  deletedCrispAt: String
+  deletedBrazeAt: String    
+  completedRequestAt: String
+}

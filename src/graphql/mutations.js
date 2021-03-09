@@ -289,3 +289,60 @@ export const deleteAction = /* GraphQL */ `
     }
   }
 `;
+export const createDeletedUser = /* GraphQL */ `
+  mutation CreateDeletedUser(
+    $input: CreateDeletedUserInput!
+    $condition: ModelDeletedUserConditionInput
+  ) {
+    createDeletedUser(input: $input, condition: $condition) {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateDeletedUser = /* GraphQL */ `
+  mutation UpdateDeletedUser(
+    $input: UpdateDeletedUserInput!
+    $condition: ModelDeletedUserConditionInput
+  ) {
+    updateDeletedUser(input: $input, condition: $condition) {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteDeletedUser = /* GraphQL */ `
+  mutation DeleteDeletedUser(
+    $input: DeleteDeletedUserInput!
+    $condition: ModelDeletedUserConditionInput
+  ) {
+    deleteDeletedUser(input: $input, condition: $condition) {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;

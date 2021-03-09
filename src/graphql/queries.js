@@ -167,6 +167,45 @@ export const listActions = /* GraphQL */ `
     }
   }
 `;
+export const getDeletedUser = /* GraphQL */ `
+  query GetDeletedUser($id: ID!) {
+    getDeletedUser(id: $id) {
+      id
+      userEmail
+      userName
+      requestedAt
+      deletedIdentityAt
+      deletedCrispAt
+      deletedBrazeAt
+      completedRequestAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDeletedUsers = /* GraphQL */ `
+  query ListDeletedUsers(
+    $filter: ModelDeletedUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDeletedUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        userEmail
+        userName
+        requestedAt
+        deletedIdentityAt
+        deletedCrispAt
+        deletedBrazeAt
+        completedRequestAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const searchLists = /* GraphQL */ `
   query SearchLists(
     $filter: SearchableListFilterInput
