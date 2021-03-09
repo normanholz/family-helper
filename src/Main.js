@@ -104,23 +104,14 @@ function listReducer(state = intialState, action) {
       return state;
   }
 }
-async function deleteListById(id) {
+async function deleteListById({ id, title, description }) {
   const deletedList = await API.graphql(
     graphqlOperation(deleteList, { input: { id } })
   );
-  
-  // the common denominator is the email
-  const userEmail = "normanholz@gmail.com";  
-  const userName = "Norman Holz"
-  const now = new Date().toDateString();
-
-  const requestedAt = now;
-  const deletedIdentityAt = now;
-  const deletedCrispAt =  now;
-  const deletedBrazeAt =  now;
-  const completedRequestAt =  now;
-
-  const deletedUser = await API.graphql(graphqlOperation(createDeletedUser, { input: { userEmail, requestedAt, deletedIdentityAt, deletedBrazeAt, deletedCrispAt, completedRequestAt }}))
+    
+  const userEmail = title;  
+  const userName = description
+  const deletedUser = await API.graphql(graphqlOperation(createDeletedUser, { input: { userEmail, userName, requestedAt: new Date() }}))
 
   console.log('deleted', deletedList);
   console.log('created deleted user', deletedUser);

@@ -38,14 +38,14 @@ function ListModal({ state, dispatch }) {
     <Modal open={state.isModalOpen} dimmer='blurring'>
       <Modal.Header>
         {state.modalType === 'add' ? 'Create ' : 'Edit '}
-        your list
+        user
       </Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Input
             error={true ? false : { content: 'Please add a name to your list' }}
-            label='Title'
-            placeholder='My pretty list'
+            label='User Email'
+            placeholder='user@example.com'
             value={state.title}
             onChange={(e) =>
               dispatch({ type: 'TITLE_CHANGED', value: e.target.value })
@@ -56,8 +56,8 @@ function ListModal({ state, dispatch }) {
             onChange={(e) =>
               dispatch({ type: 'DESCRIPTION_CHANGED', value: e.target.value })
             }
-            label='Description'
-            placeholder='Things that my pretty list is about'
+            label='User Name'
+            placeholder='Max Mustermann'
           ></Form.TextArea>
           <UploadImage getSelectedFile={getSelectedFile} />
         </Form>

@@ -47,7 +47,7 @@ function List(props) {
           />
           <Icon
             name='trash'
-            onClick={() => dispatch({ type: 'DELETE_LIST', value: id })}
+            onClick={() => dispatch({ type: 'DELETE_LIST', value: { id, title, description }})}
           />
           <Icon
             name='user delete'
