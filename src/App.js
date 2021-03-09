@@ -42,7 +42,6 @@ function App() {
 
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState('');
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   async function fetchList() {
     const { data } = await API.graphql(graphqlOperation(listLists));
@@ -72,6 +71,7 @@ function App() {
       addToList(value);
     }  
   });
+  return () => subscription.unsubscribe();
   }, [])
 
   async function saveList() {
