@@ -8,7 +8,7 @@ import 'semantic-ui-css/semantic.min.css';
 import MainHeader from './components/headers/MainHeader';
 import Lists from './components/Lists/Lists';
 import { Button, Container, Icon } from 'semantic-ui-react';
-import { deleteList } from './graphql/mutations';
+import { createDeletedUser, deleteList } from './graphql/mutations';
 import {
   onCreateList,
   onDeleteList,
@@ -85,10 +85,25 @@ function listReducer(state = intialState, action) {
   }
 }
 async function deleteListById(id) {
-  const result = await API.graphql(
+  const deletedList = await API.graphql(
     graphqlOperation(deleteList, { input: { id } })
   );
-  console.log('deleted', result);
+  
+  // the common denominator is the email
+  const userEmail = "normanholz@gmail.com";  
+  const userName = "Norman Holz"
+  const now = new Date().toDateString();
+
+  const requestedAt = now;
+  const deletedIdentityAt = now;
+  const deletedCrispAt =  now;
+  const deletedBrazeAt =  now;
+  const completedRequestAt =  now;
+
+  const deletedUser = await API.graphql(graphqlOperation(createDeletedUser, { input: { userEmail, requestedAt, deletedIdentityAt, deletedBrazeAt, deletedCrispAt, completedRequestAt }}))
+
+  console.log('deleted', deletedList);
+  console.log('created deleted user', deletedUser);
 }
 
 function Main() {
@@ -99,8 +114,9 @@ function Main() {
     dispatch({ type: 'UPDATE_LISTS', value: data.listLists.items });
   }
 
-  async function fetchDeletedUsers() {
+  async function fetchDeletedUsers() {    
     const { data } = await API.graphql(graphqlOperation(listDeletedUsers));
+    console.log('fetched deleted users with data: ', data);
     dispatch({ type: 'UPDATE_DELETED_USERS', value: data.listDeletedUsers.items });
   }
 
