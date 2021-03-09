@@ -32,3 +32,11 @@ type DeletedUser @model {
   deletedBrazeAt: String    
   completedRequestAt: String
 }
+
+type Query {
+  echo(msg: String): String @function(name: "echofunction-${env}")
+}
+
+type Mutation {
+  add(number1: Int, number2: Int): Int @function(name: "deleteBrazeUserData-${env}")
+}

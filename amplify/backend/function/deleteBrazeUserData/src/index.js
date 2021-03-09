@@ -1,17 +1,8 @@
-
-
 exports.handler = async (event) => {
-    // TODO implement
-    const response = {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Norman Lambda!'),
-    };
+    /* Add number1 and number2, return the result */
+    console.log('[debug]', 'running dummy lambda');
+    const response = event.arguments.number1 + event.arguments.number2
 
-    console.log('[debug]', 'lambda function ran');
+    console.log('[debug]', 'running dummy lambda: ', response);
     return response;
 };
