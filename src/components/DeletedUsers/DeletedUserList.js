@@ -4,7 +4,7 @@ import DeletedUser from '../DeletedUsers/DeletedUser';
 
 function DeletedUserList({ deletedUsers }) {
   return (
-    <div>
+    <div className='mt-3'>
       <Item.Group>
         {deletedUsers.map((user) => (
           <DeletedUser key={user.id} {...user}>
