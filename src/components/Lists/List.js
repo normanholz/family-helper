@@ -49,6 +49,22 @@ function List(props) {
             name='trash'
             onClick={() => dispatch({ type: 'DELETE_LIST', value: id })}
           />
+          <Icon
+            name='user delete'
+            onClick={() => dispatch({ type: 'DELETE_IDENTIY', value: 'delete the cognito id' })}
+          />
+          <Icon
+            name='delete calendar'
+            onClick={() => dispatch({ type: 'DELETE_BRAZE', value: 'call the function' })}
+          />
+          <Icon
+            name='chat'
+            onClick={() => dispatch({ type: 'DELETE_CRISP', value: new Date() })}
+          />
+          <Icon
+            name='checked calendar'
+            onClick={() => dispatch({ type: 'REQUEST_COMPLETED', value: new Date() })}
+          />
         </Item.Extra>
       </Item.Content>
     </Item>
