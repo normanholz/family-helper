@@ -79,6 +79,26 @@ function listReducer(state = intialState, action) {
         description: newValue.description,
       };
     }
+    case 'DELETE_IDENTIY': {
+      console.log('delete identity pressed: ', action.value);
+      return { ...state};
+    }
+    case 'DELETE_BRAZE': {
+      console.log('delete braze pressed: ', action.value);
+      return { ...state};
+    }
+    case 'CRISP_DELETED': {
+      console.log('crisp deleted pressed: ', action.value);
+      // TODO updated the date
+      return { ...state};
+    }
+
+    case 'REQUEST_COMPLETED': {
+      console.log('process completed: ', action.value);
+      // TODO updated the date
+      return { ...state};
+    }
+
     default:
       console.log('Default action for: ', action);
       return state;

@@ -54,15 +54,15 @@ function List(props) {
             onClick={() => dispatch({ type: 'DELETE_IDENTIY', value: 'delete the cognito id' })}
           />
           <Icon
-            name='delete calendar'
+            name='adversal'
             onClick={() => dispatch({ type: 'DELETE_BRAZE', value: 'call the function' })}
           />
           <Icon
             name='chat'
-            onClick={() => dispatch({ type: 'DELETE_CRISP', value: new Date() })}
+            onClick={() => dispatch({ type: 'CRISP_DELETED', value: new Date() })}
           />
           <Icon
-            name='checked calendar'
+            name='check'
             onClick={() => dispatch({ type: 'REQUEST_COMPLETED', value: new Date() })}
           />
         </Item.Extra>
