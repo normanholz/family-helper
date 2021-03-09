@@ -5,6 +5,7 @@ import awsConfig from './aws-exports';
 import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listLists } from './graphql/queries';
 import { createList } from './graphql/mutations';
+import { onCreateList } from './graphql/subscriptions'
 import MainHeader from './components/headers/MainHeader';
 import 'semantic-ui-css/semantic.min.css';
 import Lists from './components/List/Lists';
@@ -33,10 +34,13 @@ function listReducer(state = initialState, action) {
 function App() {
 
   const [state, dispatch] = useReducer(listReducer, initialState)
+
   const [lists, setLists] = useState([]);
+  const [newList, setNewList] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   async function fetchList() {
-    const {data} = await API.graphql(graphqlOperation(listLists));
+    const { data } = await API.graphql(graphqlOperation(listLists));
     setLists(data.listLists.items);
     console.log(data);
   }
@@ -44,6 +48,26 @@ function App() {
   useEffect(() => {
     fetchList();
   }, []);
+
+    useEffect(() => {
+    if (newList !== '') {      
+      setLists([newList, ...lists])
+    }
+  }, [newList])
+
+  function addToList({ data }) {
+    setNewList(data.onCreateList);    
+  }
+
+  useEffect(() => {
+    let subscription = API.graphql(graphqlOperation(onCreateList))
+    .subscribe(
+      {next: ({provider, value}) => {
+      console.log('[DEBUG]', provider, value)
+      addToList(value);
+    }  
+  });
+  }, [])
 
   function toggleModal(shouldOpen) {
       setIsModalOpen(shouldOpen);
