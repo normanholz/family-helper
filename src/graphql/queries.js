@@ -6,6 +6,11 @@ export const echo = /* GraphQL */ `
     echo(msg: $msg)
   }
 `;
+export const getCoins = /* GraphQL */ `
+  query GetCoins($limit: Int) {
+    getCoins(limit: $limit)
+  }
+`;
 export const getList = /* GraphQL */ `
   query GetList($id: ID!) {
     getList(id: $id) {

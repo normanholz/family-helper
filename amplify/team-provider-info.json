@@ -16,13 +16,13 @@
         "familyhelper19951de9": {}
       },
       "function": {
-        "deleteBrazeUserData": {
-          "deploymentBucketName": "amplify-familyhelper-dev-111047-deployment",
-          "s3Key": "amplify-builds/deleteBrazeUserData-416f396b433243393630-build.zip"
-        },
         "echofunction": {
           "deploymentBucketName": "amplify-familyhelper-dev-111047-deployment",
           "s3Key": "amplify-builds/echofunction-30562f674846595a3541-build.zip"
+        },
+        "cryptofunction": {
+          "deploymentBucketName": "amplify-familyhelper-dev-111047-deployment",
+          "s3Key": "amplify-builds/cryptofunction-7a6b455a387342672f6e-build.zip"
         }
       }
     }

@@ -3,7 +3,7 @@ import { useEffect, useReducer } from 'react';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsConfig from './aws-exports';
 import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { listDeletedUsers, listLists } from './graphql/queries';
+import { getCoins, listDeletedUsers, listLists } from './graphql/queries';
 import 'semantic-ui-css/semantic.min.css';
 import MainHeader from './components/headers/MainHeader';
 import Lists from './components/Lists/Lists';
@@ -113,8 +113,14 @@ async function deleteListById({ id, title, description }) {
   const userName = description
   const deletedUser = await API.graphql(graphqlOperation(createDeletedUser, { input: { userEmail, userName, requestedAt: new Date() }}))
 
+  // trigger test lambda calling another API
+  const response = await API.graphql(
+    graphqlOperation(getCoins, { input: { limit: 10 } })
+  );
+
   console.log('deleted', deletedList);
   console.log('created deleted user', deletedUser);
+  console.log('got coins', response);
 }
 
 function Main() {

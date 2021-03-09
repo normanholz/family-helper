@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "deleteBrazeUserData",
+            "cryptofunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "deleteBrazeUserData",
+                  "cryptofunction",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "familyhelperLambdaRolecc52bb6e",
+            "familyhelperLambdaRoleb916a92e",
             {
               "Fn::Join": [
                 "",
                 [
-                  "familyhelperLambdaRolecc52bb6e",
+                  "familyhelperLambdaRoleb916a92e",
                   "-",
                   {
                     "Ref": "env"

@@ -31,12 +31,12 @@
     }
   },
   "function": {
-    "deleteBrazeUserData": {
+    "echofunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "echofunction": {
+    "cryptofunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"

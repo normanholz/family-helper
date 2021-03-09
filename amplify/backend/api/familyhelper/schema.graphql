@@ -35,8 +35,5 @@ type DeletedUser @model {
 
 type Query {
   echo(msg: String): String @function(name: "echofunction-${env}")
-}
-
-type Mutation {
-  add(number1: Int, number2: Int): Int @function(name: "deleteBrazeUserData-${env}")
+  getCoins(limit: Int): String @function(name: "cryptofunction-${env}")
 }
